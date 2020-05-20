@@ -12,6 +12,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Button from '@material-ui/core/Button';
+import DraggableColorBox from './DraggableColorBox';
 import {ChromePicker} from 'react-color';
 // import { withStyles } from '@material-ui/styles';
 
@@ -57,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
   },
   content: {
+    height: 'calc(100vh - 64px)',
     flexGrow: 1,
     padding: theme.spacing(3),
     transition: theme.transitions.create('margin', {
@@ -128,9 +130,9 @@ function NewPaletteForm(props) {
         </Drawer>
         <main className={clsx(classes.content, {[classes.contentShift]: open,})}>
             <div className={classes.drawerHeader} />
-            <ul>
-              {colors.map(color => (<li>{color}</li>))}
-            </ul>
+            {colors.map(color => 
+              <DraggableColorBox color={color}/>
+            )}
         </main>
     </div>
   );

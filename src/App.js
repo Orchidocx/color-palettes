@@ -17,7 +17,7 @@ class App extends Component {
     console.log(generatePalette(seedColors[4]));
     return (
       <Switch>
-        <Route exact path='/palette/new' render={()=><NewPaletteForm hello={12}/>}/>
+        <Route exact path='/palette/new' render={()=><NewPaletteForm/>}/>
         <Route exact path='/' render={(routeProps)=><PaletteList palettes={seedColors} {...routeProps}/>}/>
         <Route exact path='/palette/:id' 
               render={routeProps =>(

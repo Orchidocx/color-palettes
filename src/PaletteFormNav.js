@@ -21,7 +21,7 @@ class PaletteFormNav extends Component {
         const {classes, open, handleDrawerOpen, handleNewPaletteName, savePalette, newPaletteName} = this.props;
 
         return (
-            <div>
+            <div className={clsx(classes.root)}>
                 <CssBaseline />
                 <AppBar color='default' position="fixed" className={clsx(classes.appBar, {[classes.appBarShift]: open,})}>
                 <Toolbar>
@@ -29,8 +29,11 @@ class PaletteFormNav extends Component {
                     <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                    Persistent drawer
+                        Create A Palette
                     </Typography>
+                    
+                </Toolbar>
+                <div className={clsx(classes.navBtns)}>
                     <ValidatorForm onSubmit={savePalette}>
                     <TextValidator name={newPaletteName} 
                                     label="Palette Name" 
@@ -40,11 +43,12 @@ class PaletteFormNav extends Component {
                                     errorMessages={['Enter a palette name', 'Name already in use']}
                     />
                     <Button variant='contained' type='submit' color='secondary'>Save Palette</Button>
+                    
+                    </ValidatorForm>
                     <Link to='/'>
                         <Button variant='contained' color='secondary'>GO BACK</Button>
                     </Link>
-                    </ValidatorForm>
-                </Toolbar>
+                </div>
                 </AppBar>
             </div>
         )

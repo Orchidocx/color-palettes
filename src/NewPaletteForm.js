@@ -12,6 +12,7 @@ import DraggableColorList from './DraggableColorList';
 import { arrayMove } from 'react-sortable-hoc';
 import PaletteFormNav from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
+// import { withStyles } from '@material-ui/styles';
 
 const drawerWidth = 350;
 
@@ -24,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: '64px',
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -36,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  navBtns: {},
   hide: {
     display: 'none',
   },

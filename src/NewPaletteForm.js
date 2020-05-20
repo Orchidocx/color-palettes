@@ -116,10 +116,17 @@ function NewPaletteForm(props) {
       setNewName(evt.target.value);
     }
 
+    const savePalette = () => {
+      let newName = 'New Test Palette';
+      const newPalette = {paletteName: newName, id: newName.toLowerCase().replace(/ /g, '-'), colors: colors};
+      props.savePalette(newPalette);
+      props.history.push('/');
+    }
+
     return (
       <div className={classes.root}>
         <CssBaseline />
-        <AppBar position="fixed" className={clsx(classes.appBar, {[classes.appBarShift]: open,})}>
+        <AppBar color='default' position="fixed" className={clsx(classes.appBar, {[classes.appBarShift]: open,})}>
           <Toolbar>
             <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerOpen} edge="start" className={clsx(classes.menuButton, open && classes.hide)}>
               <MenuIcon />
@@ -127,6 +134,7 @@ function NewPaletteForm(props) {
             <Typography variant="h6" noWrap>
               Persistent drawer
             </Typography>
+            <Button variant='contained' color='secondary' onClick={savePalette}>Save Palette</Button>
           </Toolbar>
         </AppBar>
 
@@ -152,7 +160,6 @@ function NewPaletteForm(props) {
             />
             <Button variant='contained' style={{background: currentColor}} color='primary' type='submit'>Add Color</Button>
           </ValidatorForm>
-          
         </Drawer>
         <main className={clsx(classes.content, {[classes.contentShift]: open,})}>
             <div className={classes.drawerHeader} />

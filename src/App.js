@@ -29,7 +29,7 @@ class App extends Component {
     console.log(generatePalette(seedColors[4]));
     return (
       <Switch>
-        <Route exact path='/palette/new' render={routeProps=><NewPaletteForm palettes={this.state.palettes} savePalette={this.savePalette} {...routeProps}/>}/>
+        <Route exact path='/palette/new' render={routeProps=><NewPaletteForm palettes={this.state.palettes} savePalette={this.savePalette} maxSize={20} {...routeProps}/>}/>
         <Route exact path='/' render={(routeProps)=><PaletteList palettes={this.state.palettes} {...routeProps}/>}/>
         <Route exact path='/palette/:id' 
               render={routeProps =>(

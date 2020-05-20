@@ -84,6 +84,7 @@ function NewPaletteForm(props) {
     const [currentColor, setCurrentColor] = React.useState('#ff6372');
     const [colors, setColors] = React.useState([]);
     const [newName, setNewName] = React.useState('');
+    const [newPaletteName, setNewPaletteName] = React.useState('');
 
     React.useEffect(() => {
       ValidatorForm.addValidationRule('isColorNameUnique', value => 
@@ -91,6 +92,9 @@ function NewPaletteForm(props) {
       );
       ValidatorForm.addValidationRule('isColorUnique', (value) => 
         colors.every(({color}) => color !== currentColor)
+      );
+      ValidatorForm.addValidationRule('isPaletteNameUnique', (value) => 
+        props.palettes.every(({paletteName}) => paletteName.toLowerCase() !== value.toLowerCase())
       );
     });
 
@@ -116,8 +120,12 @@ function NewPaletteForm(props) {
       setNewName(evt.target.value);
     }
 
+    const handleNewPaletteName = (evt) => {
+      setNewPaletteName(evt.target.value);
+    }
+
     const savePalette = () => {
-      let newName = 'New Test Palette';
+      let newName = newPaletteName;
       const newPalette = {paletteName: newName, id: newName.toLowerCase().replace(/ /g, '-'), colors: colors};
       props.savePalette(newPalette);
       props.history.push('/');
@@ -134,7 +142,16 @@ function NewPaletteForm(props) {
             <Typography variant="h6" noWrap>
               Persistent drawer
             </Typography>
-            <Button variant='contained' color='secondary' onClick={savePalette}>Save Palette</Button>
+            <ValidatorForm onSubmit={savePalette}>
+              <TextValidator name={newPaletteName} 
+                              label="Palette Name" 
+                              value={newPaletteName}
+                              onChange={handleNewPaletteName}
+                              validators={['required', 'isPaletteNameUnique']}
+                              errorMessages={['Enter a palette name', 'Name already in use']}
+              />
+              <Button variant='contained' type='submit' color='secondary'>Save Palette</Button>
+            </ValidatorForm>
           </Toolbar>
         </AppBar>
 
@@ -154,6 +171,7 @@ function NewPaletteForm(props) {
 
           <ValidatorForm onSubmit={addNewColor}>
             <TextValidator  value={newName} 
+                            name="newName"
                             onChange={handleNewName}
                             validators={['required', 'isColorNameUnique', 'isColorUnique']}
                             errorMessages={['Enter a color name!', 'Color name must be unique!', 'Color already used!']}

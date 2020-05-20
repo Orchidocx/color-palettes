@@ -2,13 +2,9 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Button from '@material-ui/core/Button';
@@ -16,6 +12,7 @@ import DraggableColorList from './DraggableColorList';
 import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import {ChromePicker} from 'react-color';
 import { arrayMove } from 'react-sortable-hoc';
+import PaletteFormNav from './PaletteFormNav';
 // import { withStyles } from '@material-ui/styles';
 
 const drawerWidth = 350;
@@ -155,7 +152,14 @@ function NewPaletteForm(props) {
     }
     return (
       <div className={classes.root}>
-        <CssBaseline />
+        <PaletteFormNav open={open} 
+                        classes={classes} 
+                        handleDrawerOpen={handleDrawerOpen} 
+                        savePalette={savePalette} 
+                        handleNewPaletteName={handleNewPaletteName} 
+                        newPaletteName={newPaletteName}
+        />
+        {/* <CssBaseline />
         <AppBar color='default' position="fixed" className={clsx(classes.appBar, {[classes.appBarShift]: open,})}>
           <Toolbar>
             <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerOpen} edge="start" className={clsx(classes.menuButton, open && classes.hide)}>
@@ -173,9 +177,12 @@ function NewPaletteForm(props) {
                               errorMessages={['Enter a palette name', 'Name already in use']}
               />
               <Button variant='contained' type='submit' color='secondary'>Save Palette</Button>
+              <Link to='/'>
+                <Button variant='contained' color='secondary'>GO BACK</Button>
+              </Link>
             </ValidatorForm>
           </Toolbar>
-        </AppBar>
+        </AppBar> */}
 
         <Drawer className={classes.drawer} variant="persistent" anchor="left" open={open} classes={{ paper: classes.drawerPaper, }}>
           <div className={classes.drawerHeader}>
@@ -189,7 +196,7 @@ function NewPaletteForm(props) {
             <Button variant='contained' color='secondary' onClick={clearColors}>Clear Palette</Button>
             <Button variant='contained' color='primary' onClick={addRandomColor} disabled={paletteFull}>Random Color</Button>
           </div>
-          <ChromePicker color={currentColor} onChangeComplete={updateColor}/>
+          <ChromePicker style={{justifyContent: 'center'}}color={currentColor} onChangeComplete={updateColor}/>
 
           <ValidatorForm onSubmit={addNewColor}>
             <TextValidator  value={newName} 

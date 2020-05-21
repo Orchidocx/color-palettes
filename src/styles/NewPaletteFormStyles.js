@@ -12,6 +12,7 @@ export default makeStyles((theme) => ({
       flexDirection: 'row',
       justifyContent: 'space-between',
       height: '64px',
+      alignItems: 'center'
     },
     appBarShift: {
       width: `calc(100% - ${drawerWidth}px)`,
@@ -24,7 +25,12 @@ export default makeStyles((theme) => ({
     menuButton: {
       marginRight: theme.spacing(2),
     },
-    navBtns: {},
+    navBtns: {
+      margin: '0px 25px',
+      "& a": {
+        textDecoration: 'none'
+      }
+    },
     hide: {
       display: 'none',
     },
@@ -89,5 +95,8 @@ export default makeStyles((theme) => ({
     colorNameInput: {
       width: '100%',
       height: '70px'
+    },
+    formButton: {
+      margin: '0rem 1.5rem'
     }
   }));

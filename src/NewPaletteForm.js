@@ -14,7 +14,7 @@ import PaletteFormNav from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
 // import { withStyles } from '@material-ui/styles';
 
-const drawerWidth = 350;
+const drawerWidth = 400;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,6 +50,8 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    display: 'flex',
+    alignItems: 'center'
   },
   drawerHeader: {
     display: 'flex',
@@ -76,6 +78,34 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   },
+  container: {
+    width:'90%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%'
+  },
+  buttons: {
+    width: '100%'
+  },
+  button: {
+    width: '50%'
+  },
+  picker: {
+    width: '100% !important',
+    marginTop: '2rem'
+  },
+  addColor: {
+    width: '100%',
+    padding: '1rem',
+    marginTop: '1rem',
+    fontSize: '2rem'
+  },
+  colorNameInput: {
+    width: '100%',
+    height: '70px'
+  }
 }));
 
 function NewPaletteForm(props) {
@@ -163,20 +193,23 @@ function NewPaletteForm(props) {
             </IconButton>
           </div>
           <Divider />
-          <Typography variant="h4">Design your Palette</Typography>
-          <div>
-            <Button variant='contained' color='secondary' onClick={clearColors}>Clear Palette</Button>
-            <Button variant='contained' color='primary' onClick={addRandomColor} disabled={paletteFull}>Random Color</Button>
-          </div>
+          <div className={clsx(classes.container)}>
+            <Typography variant="h4" gutterBottom>Design your Palette</Typography>
+            <div className={clsx(classes.buttons)}>
+              <Button className={clsx(classes.button)} variant='contained' color='secondary' onClick={clearColors}>Clear Palette</Button>
+              <Button className={clsx(classes.button)} variant='contained' color='primary' onClick={addRandomColor} disabled={paletteFull}>Random Color</Button>
+            </div>
 
-          <ColorPickerForm paletteFull={paletteFull}
-                            currentColor={currentColor}
-                            updateColor={updateColor}
-                            addNewColor={addNewColor}
-                            newName={newName}
-                            handleNewName={handleNewName}
-                            colors={colors}
-          />
+            <ColorPickerForm paletteFull={paletteFull}
+                              currentColor={currentColor}
+                              updateColor={updateColor}
+                              addNewColor={addNewColor}
+                              newName={newName}
+                              handleNewName={handleNewName}
+                              colors={colors}
+                              classes={classes}
+            />
+          </div>
           
         </Drawer>
         <main className={clsx(classes.content, {[classes.contentShift]: open,})}>

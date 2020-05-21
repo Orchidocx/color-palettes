@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import Button from '@material-ui/core/Button';
 import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import {ChromePicker} from 'react-color';
+import clsx from 'clsx';
 
-export default class ColorPickerForm extends Component {
+class ColorPickerForm extends Component {
     componentDidMount() {
         ValidatorForm.addValidationRule('isColorNameUnique', value => 
             this.props.colors.every(({name}) => name.toLowerCase() !== value.toLowerCase())
@@ -14,13 +15,17 @@ export default class ColorPickerForm extends Component {
     }
 
     render() {
-        const {paletteFull, currentColor, updateColor, addNewColor, newName, handleNewName} = this.props;
+        const {classes, paletteFull, currentColor, updateColor, addNewColor, newName, handleNewName} = this.props;
         return (
             <div>
-                <ChromePicker style={{justifyContent: 'center'}}color={currentColor} onChangeComplete={updateColor}/>
+                <ChromePicker className={clsx(classes.picker)} color={currentColor} onChangeComplete={updateColor}/>
                 <ValidatorForm onSubmit={addNewColor}>
                 <TextValidator  value={newName} 
+                                className={clsx(classes.colorNameInput)}
+                                variant='filled'
                                 name="newName"
+                                placeholder='Color Name'
+                                margin='normal'
                                 onChange={handleNewName}
                                 validators={['required', 'isColorNameUnique', 'isColorUnique']}
                                 errorMessages={['Enter a color name!', 'Color name must be unique!', 'Color already used!']}
@@ -31,6 +36,7 @@ export default class ColorPickerForm extends Component {
                 color='primary' 
                 type='submit'
                 disabled={paletteFull}
+                className={clsx(classes.addColor)}
                 >
                 {paletteFull ? 'PALETTE FULL' : 'Add Color'}
                 </Button>
@@ -39,3 +45,6 @@ export default class ColorPickerForm extends Component {
         )
     }
 }
+
+
+export default ColorPickerForm;

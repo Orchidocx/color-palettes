@@ -8,7 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Button from '@material-ui/core/Button';
-import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
+import PaletteMetaForm from './PaletteMetaForm';
+import {ValidatorForm} from 'react-material-ui-form-validator';
 
 class PaletteFormNav extends Component {
     componentDidMount() {
@@ -34,7 +35,7 @@ class PaletteFormNav extends Component {
                     
                 </Toolbar>
                 <div className={clsx(classes.navBtns)}>
-                    <ValidatorForm onSubmit={savePalette}>
+                    {/* <ValidatorForm onSubmit={savePalette}>
                     <TextValidator name={newPaletteName} 
                                     label="Palette Name" 
                                     value={newPaletteName}
@@ -44,7 +45,8 @@ class PaletteFormNav extends Component {
                     />
                     <Button variant='contained' type='submit' color='secondary'>Save Palette</Button>
                     
-                    </ValidatorForm>
+                    </ValidatorForm> */}
+                    <PaletteMetaForm newPaletteName={newPaletteName} handleNewPaletteName={handleNewPaletteName} savePalette={savePalette}/>
                     <Link to='/'>
                         <Button variant='contained' color='secondary'>GO BACK</Button>
                     </Link>

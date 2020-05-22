@@ -40,7 +40,8 @@ export default function PaletteMetaForm(props) {
     <div>
         {/* {savePalette} */}
         <Dialog open={open===2} onClose={handleClose}>
-            <Picker onSelect={saveEmojiPalette}/>
+          <DialogTitle id="form-dialog-title">Pick a Palette Emoji</DialogTitle>  
+          <Picker title='Pick an emoji' onSelect={saveEmojiPalette}/>
         </Dialog>
       <Button className={clsx(classes.formButton)} variant="contained" color="primary" onClick={handleClickOpen}>
         Save

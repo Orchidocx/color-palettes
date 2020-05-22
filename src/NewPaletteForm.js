@@ -54,7 +54,7 @@ function NewPaletteForm(props) {
     const savePalette = (newPalette) => {
       console.log(newPalette);
       const newPaletteResult = {paletteName: newPalette.paletteName,
-                          id: newPalette.toLowerCase().replace(/ /g, '-'),
+                          id: newPalette.paletteName.toLowerCase().replace(/ /g, '-'),
                           colors: colors,
                           emoji: newPalette.emoji
       };
@@ -62,8 +62,8 @@ function NewPaletteForm(props) {
       newPalette.id = newPaletteName.toLowerCase().replace(/ /g, '-');
       newPalette.colors = colors;
       // const newPalette = {paletteName: newName, id: newName.toLowerCase().replace(/ /g, '-'), colors: colors};
-      // props.savePalette(newPalette);
-      // props.history.push('/');
+      props.savePalette(newPalette);
+      props.history.push('/');
     }
 
     const removeColor = (colorName) => {

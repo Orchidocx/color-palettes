@@ -17,32 +17,44 @@ export default function PaletteMetaForm(props) {
   const {savePalette, newPaletteName, handleNewPaletteName,classes} = props;
 
   const handleClickOpen = () => {
-    setOpen(true);
+    setOpen(1);
   };
 
+  const handleEmojiOpen = () => {
+      setOpen(2);
+  }
+
   const handleClose = () => {
-    setOpen(false);
+    setOpen(0);
   };
+
+  const saveEmojiPalette = (emoji) => {
+      const newPalette = {
+          paletteName: newPaletteName,
+          emoji: emoji.native
+      };
+        savePalette(newPalette);
+  }
 
   return (
     <div>
+        {/* {savePalette} */}
+        <Dialog open={open===2} onClose={handleClose}>
+            <Picker onSelect={saveEmojiPalette}/>
+        </Dialog>
       <Button className={clsx(classes.formButton)} variant="contained" color="primary" onClick={handleClickOpen}>
         Save
       </Button>
       <Link to='/'>
         <Button variant='contained' color='secondary'>GO BACK</Button>
       </Link>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+      <Dialog open={open===1} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Choose a Palette Name</DialogTitle>
-        <ValidatorForm onSubmit={savePalette}>
+        <ValidatorForm onSubmit={handleEmojiOpen}>
         <DialogContent>
           <DialogContentText>
             Please enter a name for your new beautiful palette! Make sure it's unique!
           </DialogContentText>
-
-          <Picker/>
-
-          
             <TextValidator name={newPaletteName} 
                             label="Palette Name" 
                             value={newPaletteName}

@@ -15,11 +15,11 @@ export default {
         },
         [sizes.down('lg')]: {
             width: '25%',
-            height: props => props.showingFullPalette ? '20%' : '40%',
+            height: props => props.showingFullPalette ? '20%' : '33%',
         },
         [sizes.down('md')]: {
             width: '50%',
-            height: props => props.showingFullPalette ? '10%' : '40%',
+            height: props => props.showingFullPalette ? '10%' : '20%',
         },
         [sizes.down('xs')]: {
             width: '100%',
@@ -38,13 +38,14 @@ export default {
         background: 'rgba(255,255,255,0.3)',
         position: 'absolute',
         border: 'none',
-        right: '0px',
-        bottom: '0px',
+        right: '5px',
+        bottom: '5px',
         width: '60px',
         height: '30px',
         textAlign: 'center',
         lineHeight: '30px',
-        textTransform: 'uppercase'
+        textTransform: 'uppercase',
+        borderRadius: '25%'
     },
     copyButton: {
         color: props => chroma(props.background).luminance() >= 0.7 ? "black" : "white",
@@ -87,7 +88,7 @@ export default {
     },
     showOverlay: {
         opacity: '1',
-        transform: 'scale(10)',
+        transform: 'scale(50)',
         zIndex: '10',
         position: 'absolute'
     },
@@ -113,7 +114,10 @@ export default {
             textAlign: 'center',
             marginBottom: '0',
             padding: '1rem',
-            textTransform: 'uppercase'
+            textTransform: 'uppercase',
+            [sizes.down('xs')]: {
+                fontSize: '5rem'
+            }
         },
         "& p": {
             fontSize: '2rem',

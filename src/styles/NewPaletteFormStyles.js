@@ -46,6 +46,7 @@ export default makeStyles((theme) => ({
     drawerHeader: {
       display: 'flex',
       alignItems: 'center',
+      width: '100%',
       padding: theme.spacing(0, 1),
       // necessary for content to be below app bar
       ...theme.mixins.toolbar,

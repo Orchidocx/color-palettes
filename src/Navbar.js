@@ -6,6 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Snackbar from "@material-ui/core/Snackbar";
 import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
+import PaletteIcon from '@material-ui/icons/Palette';
 import {withStyles} from '@material-ui/styles';
 
 import 'rc-slider/assets/index.css';
@@ -36,7 +37,14 @@ class Navbar extends Component {
         return (
             <header className={classes.Navbar}>
                 <div className={classes.logo}>
+                    
                     <Link to="/">palettes</Link>
+                    
+                </div>
+                <div className={classes.xsLogo}>
+                    <Link to='/'>
+                    <PaletteIcon/>
+                    </Link>
                 </div>
                 {showingAllColors && (
                 <div>

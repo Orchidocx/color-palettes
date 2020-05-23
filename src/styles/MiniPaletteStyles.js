@@ -6,8 +6,9 @@ export default {
         padding: '0.5rem',
         position: 'relative',
         overflow: 'hidden',
-        '&:hover': {
-            cursor: 'pointer'
+        cursor: 'pointer',
+        '&:hover $deleteIcon': {
+            opacity: 1
         }
     },
     colors: {
@@ -38,5 +39,22 @@ export default {
         margin: '0 auto',
         position: 'relative',
         marginBottom: '-3.5px'
+    },
+    delete: {
+
+    },
+    deleteIcon: {
+        color: 'white',
+        backgroundColor: '#eb3d30',
+        height: '30px',
+        width: '30px',
+        position: 'absolute',
+        right: '3px',
+        top: '3px',
+        padding: '3px',
+        zIndex: 2,
+        opacity: 0,
+        borderRadius: '100%',
+        transition: 'all 0.2s 0s ease-in'
     }
 };

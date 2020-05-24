@@ -125,7 +125,7 @@ function NewPaletteForm(props) {
         </Drawer>
         <main className={clsx(classes.content, {[classes.contentShift]: open,})}>
             <div className={classes.drawerHeader} />
-            <DraggableColorList colors={colors} removeColor={removeColor} axis='xy' onSortEnd={onSortEnd}/>
+            <DraggableColorList colors={colors} removeColor={removeColor} axis='xy' onSortEnd={onSortEnd} distance={10}/>
         </main>
     </div>
   );

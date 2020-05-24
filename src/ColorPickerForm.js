@@ -19,7 +19,7 @@ class ColorPickerForm extends Component {
         return (
             <div>
                 <ChromePicker className={clsx(classes.picker)} color={currentColor} onChangeComplete={updateColor}/>
-                <ValidatorForm onSubmit={addNewColor}>
+                <ValidatorForm onSubmit={addNewColor} ref='form' instantValidate={false}>
                 <TextValidator  value={newName} 
                                 className={clsx(classes.colorNameInput)}
                                 variant='filled'

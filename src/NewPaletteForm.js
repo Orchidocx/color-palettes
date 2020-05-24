@@ -13,13 +13,14 @@ import { arrayMove } from 'react-sortable-hoc';
 import PaletteFormNav from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
 import useStyles from './styles/NewPaletteFormStyles';
+import seedColors from './seedColors';
 
 function NewPaletteForm(props) {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
     const [currentColor, setCurrentColor] = React.useState('#ff6372');
-    const [colors, setColors] = React.useState(props.palettes[0].colors);
+    const [colors, setColors] = React.useState(seedColors[Math.floor(seedColors.length*Math.random())].colors);
     const [newName, setNewName] = React.useState('');
     const [newPaletteName, setNewPaletteName] = React.useState('');
     const {maxSize} = props;

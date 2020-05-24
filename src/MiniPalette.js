@@ -4,7 +4,7 @@ import styles from "./styles/MiniPaletteStyles";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 function MiniPalette(props) {
-    const {classes, paletteName, emoji, colors} = props;
+    const {classes, paletteName, emoji, colors,id} = props;
     const miniColorBoxes = colors.map(color => (
         <div className={classes.miniColor} style={{backgroundColor:color.color}} key={color.name}></div>
     ));
@@ -16,7 +16,7 @@ function MiniPalette(props) {
     }
 
     return (
-        <div className={classes.root} onClick={props.handleClick}>
+        <div className={classes.root} onClick={() => props.handleClick(id)}>
             <DeleteForeverIcon className={classes.deleteIcon}
                                 onClick={deletePalette}
             />

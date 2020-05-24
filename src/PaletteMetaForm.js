@@ -43,11 +43,11 @@ export default function PaletteMetaForm(props) {
           <DialogTitle id="form-dialog-title">Pick a Palette Emoji</DialogTitle>  
           <Picker title='Pick an emoji' onSelect={saveEmojiPalette}/>
         </Dialog>
-      <Button className={clsx(classes.formButton)} variant="contained" color="primary" onClick={handleClickOpen}>
+      <Button styles={clsx(classes.formButton)} variant="contained" color="primary" onClick={handleClickOpen}>
         Save
       </Button>
       <Link to='/'>
-        <Button variant='contained' color='secondary'>GO BACK</Button>
+        <Button className={clsx(classes.formButton)} variant='contained' color='secondary'>BACK</Button>
       </Link>
       <Dialog open={open===1} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Choose a Palette Name</DialogTitle>

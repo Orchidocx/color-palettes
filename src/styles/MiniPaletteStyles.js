@@ -9,7 +9,8 @@ export default {
         cursor: 'pointer',
         '&:hover $deleteIcon': {
             opacity: 1
-        }
+        },
+        lineHeight: 1
     },
     colors: {
         backgroundColor: '#DAE1E4',
@@ -38,7 +39,7 @@ export default {
         display: 'inline-block',
         margin: '0 auto',
         position: 'relative',
-        marginBottom: '-3.5px'
+        marginBottom: '-3.5px',
     },
     delete: {
 

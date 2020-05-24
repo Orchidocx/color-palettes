@@ -24,8 +24,8 @@ export default {
         [sizes.down('xs')]: {
             width: '100%',
             height: props => props.showingFullPalette ? '5%' : '10%',
-        }
-        
+        },
+        lineHeight: 0
     },
     copyText: {
         color: props => chroma(props.background).luminance() >= 0.7 ? "black" : "white"

@@ -1,5 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
-const drawerWidth = 400;
+import sizes from './sizes';
+const drawerWidth = 378;
+
 export default makeStyles((theme) => ({
     root: {
       display: 'flex',
@@ -29,6 +31,16 @@ export default makeStyles((theme) => ({
       margin: '0px 25px',
       "& a": {
         textDecoration: 'none'
+      },
+      [sizes.down('xs')]: {
+        marginRight: '0'
+      },
+      "& button": {
+        margin: '0 0.5rem',
+        [sizes.down('xs')]: {
+          margin: '0 0.1rem',
+          padding: '0',
+        }
       }
     },
     hide: {
@@ -81,7 +93,7 @@ export default makeStyles((theme) => ({
       width: '100%'
     },
     button: {
-      width: '50%'
+      width: '50%',
     },
     picker: {
       width: '100% !important',
@@ -99,5 +111,6 @@ export default makeStyles((theme) => ({
     },
     formButton: {
       margin: '0rem 1.5rem'
+      
     }
   }));

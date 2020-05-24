@@ -28,7 +28,7 @@ class PaletteFormNav extends Component {
                     <Create />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        Create A Palette
+                        Create Palette
                     </Typography>
                     
                 </Toolbar>

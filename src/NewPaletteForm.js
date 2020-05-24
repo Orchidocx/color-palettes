@@ -20,7 +20,7 @@ function NewPaletteForm(props) {
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
     const [currentColor, setCurrentColor] = React.useState('#ff6372');
-    const [colors, setColors] = React.useState(seedColors[Math.floor(seedColors.length*Math.random())].colors);
+    const [colors, setColors] = React.useState(seedColors[Math.floor(seedColors.length*Math.random())].colors.slice(0, 19));
     const [newName, setNewName] = React.useState('');
     const [newPaletteName, setNewPaletteName] = React.useState('');
     const {maxSize} = props;
@@ -78,8 +78,16 @@ function NewPaletteForm(props) {
 
     const addRandomColor = () => {
       const allColors = props.palettes.map(p => p.colors).flat();
-      const rand = Math.floor(Math.random() * allColors.length);
-      const randomColor = allColors[rand];
+      let rand;
+      let randomColor;
+      let isDuplicateColor = true;
+      
+      while(isDuplicateColor) {
+        rand = Math.floor(Math.random() * allColors.length);
+        randomColor = allColors[rand];
+        isDuplicateColor = colors.some(color => color.name === randomColor.name);
+      }
+      
       setColors([...colors, randomColor]);
     }
     return (

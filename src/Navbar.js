@@ -11,7 +11,6 @@ import {withStyles} from '@material-ui/styles';
 
 import 'rc-slider/assets/index.css';
 import styles from './styles/NavbarStyles';
-// import './Navbar.css';
 
 
 class Navbar extends Component {

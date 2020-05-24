@@ -52,17 +52,14 @@ function NewPaletteForm(props) {
     }
 
     const savePalette = (newPalette) => {
-      console.log(newPalette);
       const newPaletteResult = {paletteName: newPalette.paletteName,
                           id: newPalette.paletteName.toLowerCase().replace(/ /g, '-'),
                           colors: colors,
                           emoji: newPalette.emoji
       };
-      console.log(newPaletteResult);
       newPalette.id = newPaletteName.toLowerCase().replace(/ /g, '-');
       newPalette.colors = colors;
-      // const newPalette = {paletteName: newName, id: newName.toLowerCase().replace(/ /g, '-'), colors: colors};
-      props.savePalette(newPalette);
+      props.savePalette(newPaletteResult);
       props.history.push('/');
     }
 
@@ -79,8 +76,6 @@ function NewPaletteForm(props) {
     }
 
     const addRandomColor = () => {
-      //pick random color by existing palettes;
-      // need to check whether or not it exists in current palette ****
       const allColors = props.palettes.map(p => p.colors).flat();
       const rand = Math.floor(Math.random() * allColors.length);
       const randomColor = allColors[rand];

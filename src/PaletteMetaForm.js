@@ -34,6 +34,7 @@ export default function PaletteMetaForm(props) {
           emoji: emoji.native
       };
         savePalette(newPalette);
+        setOpen(0);
   }
 
   return (
